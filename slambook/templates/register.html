@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        {{ form.username.label}}
+        {% if form.username.errors %}
+                {{ form.username }}
+                {% for error in form.username.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+        {% else %}
+                {{ form.username }}
+        {% endif %}
+        <br><br>
+        {{ form.email.label}}
+        {% if form.email.errors %}
+                {{ form.email }}
+                {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+        {% else %}
+                {{ form.email }}
+        {% endif %}
+        <br><br>
+        {{ form.roll_number.label}}
+        {% if form.roll_number.errors %}
+                {{ form.roll_number }}
+                {% for error in form.roll_number.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+        {% else %}
+                {{ form.roll_number }}
+        {% endif %}
+        <br><br>
+        {{ form.password.label}}
+        {% if form.password.errors %}
+                {{ form.password }}
+                {% for error in form.password.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+        {% else %}
+                {{ form.password }}
+        {% endif %}
+        <br><br>
+        {{ form.confirm_password.label}}
+        {% if form.confirm_password.errors %}
+                {{ form.confirm_password }}
+                {% for error in form.confirm_password.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+        {% else %}
+                {{ form.confirm_password }}
+        {% endif %}
+        <br><br>
+        {{ form.submit }}
+    </form>
+</body>
+</html>

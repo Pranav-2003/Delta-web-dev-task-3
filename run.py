@@ -1,5 +1,5 @@
 from slambook import app,db
-from slambook.models import Comment, Post, User
+#from slambook.models import Comment, Post, User
 
 
 if(__name__=="__main__"):
