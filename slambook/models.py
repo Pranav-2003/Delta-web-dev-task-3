@@ -12,15 +12,21 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
+    department = db.Column(db.String(7), nullable=False)
+    batch = db.Column(db.String(4), nullable=False)
     password = db.Column(db.String(60), nullable=False)
     comments = db.relationship('Comment', backref='author', lazy=True)
     
     def __repr__(self):
-        return f"User('{self.username}', '{self.email}', '{self.image_file}')"
+        return f"User('{self.username}', '{self.email}')"
     
     
 class Comment(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    sno = db.Column(db.Integer, primary_key=True)
+    author_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     username = db.Column(db.String(20), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    about = db.Column(db.String(100), nullable=False)
+    nickname = db.Column(db.String(30))
+    moment = db.Column(db.String(50))
+    receiver_id = db.Column(db.Integer, nullable=False)
     

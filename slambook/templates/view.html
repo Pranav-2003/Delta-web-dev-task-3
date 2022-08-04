@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <h1 style="background-color:#EAE3D2;">DIGITAL SLAMBOOK</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+       <p style="text-align:center;"> {{ message }} </p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <a href="{{ url_for('logout') }}" style="text-decoration:none;font-size:1.2rem;color:black;font-weight:bold;float:right;margin-top:-49px;margin-right:20px;">Logout</a>
+    <a href="{{ url_for('account') }}" style="text-decoration:none;font-size:1.2rem;color:black;font-weight:bold;float:right;margin-top:-52px;margin-right:95px;"><img src="/static/pfp.jpg" width="30" height="30"></a><br>
+    <p style="font-weight:bold;font-size:1.8rem">Comment from {{comment.author.username}}</p>
+    <div style="margin-left:40px;">
+    <p style="font-size:1.5rem;font-weight:bold;">Thoughts about your friendship...</p>
+    <div>{{ comment.about }}</div><br>
+    <p style="font-size:1.5rem;font-weight:bold;">Nickname</p>
+    <div>{{ comment.nickname }}</div><br>
+    <p style="font-size:1.5rem;font-weight:bold;">Best Moment</p>
+    <div>{{ comment.moment }}</div><br>
+    </div>
+</body>
+</html>

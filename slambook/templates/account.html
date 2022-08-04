@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body class="bg">
+    <h1 style="background-color:#EAE3D2;">DIGITAL SLAMBOOK</h1>
+    <a href="{{ url_for('logout') }}" style="text-decoration:none;font-size:1.2rem;color:black;font-weight:bold;float:right;margin-top:-49px;margin-right:20px;">Logout</a>
+    <br>
+    <div class="login">
+    <p style="font-size:1.6rem;font-weight:bold;color:black;">Your Profile</p>
+    <br>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        {{ form.username.label}}<br>
+        {% if form.username.errors %}
+                {{ form.username }}<br>
+                {% for error in form.username.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+        {% else %}
+                {{ form.username }}
+        {% endif %}
+        <br><br>
+        {{ form.email.label}}<br>
+        {% if form.email.errors %}
+                {{ form.email }}<br>
+                {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+        {% else %}
+                {{ form.email }}
+        {% endif %}
+        <br><br>
+        {{ form.roll_number.label}}<br>
+        {% if form.roll_number.errors %}
+                {{ form.roll_number }}<br>
+                {% for error in form.roll_number.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+        {% else %}
+                {{ form.roll_number }}
+        {% endif %}
+        <p>Department</p>
+        <p style="color:black;font-weight:bold;">{{current_user.department}}</p>
+        <p>Batch</p>
+        <p style="color:black;font-weight:bold;">{{current_user.batch}}</p>
+        <br>
+        {{ form.submit }}<br><br><br>
+    </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <h1 style="background-color:#EAE3D2;">DIGITAL SLAMBOOK</h1>
+    <a href="{{ url_for('logout') }}" style="text-decoration:none;font-size:1.2rem;color:black;font-weight:bold;float:right;margin-top:-49px;margin-right:20px;">Logout</a>
+    <a href="{{ url_for('account') }}" style="text-decoration:none;font-size:1.2rem;color:black;font-weight:bold;float:right;margin-top:-52px;margin-right:95px;"><img src="/static/pfp.jpg" width="30" height="30"></a>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+       <p style="text-align:center;"> {{ message }} </p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    {%if c%}
+    <h2>Share your thoughts about {{name}}...</h2>
+    <div style="margin-left:100px;">
+    <form method="POST" action="">
+      {{ form.hidden_tag() }}
+      {{ form.name.label}}<br>
+      {% if form.name.errors %}
+              {{ form.name }}<br>
+              {% for error in form.name.errors %}
+                  <span style="color:rgb(95, 24, 7);">{{ error }}</span>
+              {% endfor %}
+      {% else %}
+              {{ form.name }}
+      {% endif %}
+      <br><br>
+      {{ form.about.label}}<br>
+      {% if form.about.errors %}
+              {{ form.about }}<br>
+              {% for error in form.about.errors %}
+                  <span style="color:rgb(95, 24, 7);">{{ error }}</span>
+              {% endfor %}
+      {% else %}
+              {{ form.about }}
+      {% endif %}
+      <br><br>
+      {{ form.nickname.label}}<br>
+      {% if form.nickname.errors %}
+              {{ form.nickname }}<br>
+              {% for error in form.nickname.errors %}
+                  <span style="color:rgb(95, 24, 7);">{{ error }}</span>
+              {% endfor %}
+      {% else %}
+              {{ form.nickname }}
+      {% endif %}
+      <br><br>
+      {{ form.moment.label}}<br>
+      {% if form.moment.errors %}
+              {{ form.moment }}<br>
+              {% for error in form.moment.errors %}
+                  <span style="color:rgb(95, 24, 7);">{{ error }}</span>
+              {% endfor %}
+      {% else %}
+              {{ form.moment }}
+      {% endif %}
+      <br><br><br>
+      {{ form.submit }}
+    </form>
+    <br>
+    <br>
+    </div>
+    {%else%}
+    <p style="font-weight:bold;font-size:1.8rem">Your Comments about {{ name }}</p>
+    <div style="margin-left:40px;">
+        <p style="font-size:1.5rem;font-weight:bold;">Thoughts about your friendship...</p>
+        <div>{{ t.about }}</div><br>
+        <p style="font-size:1.5rem;font-weight:bold;">Nickname</p>
+        <div>{{ t.nickname }}</div><br>
+        <p style="font-size:1.5rem;font-weight:bold;">Best Moment</p>
+        <div>{{ t.moment }}</div><br>
+        </div><br>
+        <button style="background:red;margin-left:40px;font-weight:bold" onclick="window.location.href='{{ url_for('delete', rno=t.receiver_id) }}'">Delete</button><br><br>
+    {%endif%}
+</body>
+</html>
+
+

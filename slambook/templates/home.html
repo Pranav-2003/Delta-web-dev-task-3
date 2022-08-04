@@ -4,8 +4,38 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 </head>
 <body>
-    WELCOME
+    <h1 style="background-color:#EAE3D2;">DIGITAL SLAMBOOK</h1>
+    <a href="{{ url_for('logout') }}" style="text-decoration:none;font-size:1.2rem;color:black;font-weight:bold;float:right;margin-top:-50px;margin-right:20px;">Logout</a>
+    <a href="{{ url_for('account') }}" style="text-decoration:none;font-size:1.2rem;color:black;font-weight:bold;float:right;margin-top:-54px;margin-right:95px;"><img src="/static/pfp.jpg" width="30" height="30"></a>
+    <br>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+       <div style="text-align:center;background-color:rgb(29, 170, 170);width:fit-content;margin-left:35vw;"> {{ message }} </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}<br>
+    <h2>Look out for your friends and share your comments about them!</h2><br>
+    <form method="POST" action="">
+    {{ form.hidden_tag() }}
+    {{form.searched}}
+    {{form.submit}}
+    </form>
+    <br><br>
+    <hr><br>
+    <h2>Comments about you from your friends...</h2><br>
+    {%if comments.count()==0 %}
+    <h2 style="text-align:center;">No comments received yet!!!</h2>
+    {%endif%}
+    {% for comment in comments %}
+    <div class="comment" onclick="window.location.href='{{ url_for('view', id=comment.author_id) }}'">
+    <p style="font-size:1.3rem;font-weight:bold;margin-left:3px;margin-bottom:2px;">Comment from {{comment.author.username}} - {{comment.author.department}}({{comment.author.batch}})</p>
+    <small style="margin-left:3px;">Click to view...</small>
+    </div><br>
+    {% endfor %}
+    <br>
 </body>
 </html>

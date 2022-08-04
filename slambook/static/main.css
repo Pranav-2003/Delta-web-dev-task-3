@@ -1,0 +1,38 @@
+.header{
+    background-color: #EAE3D2;
+    text-align: center;
+}
+
+.bg{
+    background-color: #607EAA;
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #EAE3D2;
+}
+
+.label{
+    width: 30px;
+}
+
+.section{
+    width:250px;
+    height:250px;
+    float: left;
+    margin-right:35px;
+    margin-top: 20px;
+    text-align: center;
+    border: 3px solid black;
+    background-color: rgba(177, 180, 183, 0.74);
+}
+
+.comment{
+    width:700px;
+    height:60px;
+    margin-left: 30px;
+    background-color: rgba(177, 180, 183, 0.74);
+}
