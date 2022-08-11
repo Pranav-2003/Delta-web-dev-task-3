@@ -6,70 +6,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 </head>
-<body>
+<body class="bg">
     <h1 style="background-color:#EAE3D2;">DIGITAL SLAMBOOK</h1>
     <a href="{{ url_for('logout') }}" style="text-decoration:none;font-size:1.2rem;color:black;font-weight:bold;float:right;margin-top:-49px;margin-right:20px;">Logout</a>
-    <a href="{{ url_for('account') }}" style="text-decoration:none;font-size:1.2rem;color:black;font-weight:bold;float:right;margin-top:-52px;margin-right:95px;"><img src="/static/pfp.jpg" width="30" height="30"></a>
+    <a href="{{ url_for('account') }}" style="text-decoration:none;font-size:1.2rem;color:black;font-weight:bold;float:right;margin-top:-54px;margin-right:95px;"><img src="/static/pfp.PNG" width="30" height="30"></a>
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     {% for message in messages %}
        <p style="text-align:center;"> {{ message }} </p>
     {% endfor %}
     {% endif %}
-    {% endwith %}
+    {% endwith %}<br>
     {%if c%}
-    <h2>Share your thoughts about {{name}}...</h2>
-    <div style="margin-left:100px;">
+    <div style="text-align:center">
+    <h1>Share your thoughts about {{name}}...</h1>
+    </div>
+    <div class="block">
     <form method="POST" action="">
-      {{ form.hidden_tag() }}
-      {{ form.name.label}}<br>
+      {{ form.hidden_tag() }}<br>
+      <label>{{ form.name.label}}</label><br>
       {% if form.name.errors %}
-              {{ form.name }}<br>
+              {{ form.name(class="inputbox") }}<br>
               {% for error in form.name.errors %}
                   <span style="color:rgb(95, 24, 7);">{{ error }}</span>
               {% endfor %}
       {% else %}
-              {{ form.name }}
+              {{ form.name(class="inputbox") }}
       {% endif %}
       <br><br>
       {{ form.about.label}}<br>
       {% if form.about.errors %}
-              {{ form.about }}<br>
+              {{ form.about(class="inputbox") }}<br>
               {% for error in form.about.errors %}
                   <span style="color:rgb(95, 24, 7);">{{ error }}</span>
               {% endfor %}
       {% else %}
-              {{ form.about }}
+              {{ form.about(class="inputbox") }}
       {% endif %}
       <br><br>
       {{ form.nickname.label}}<br>
       {% if form.nickname.errors %}
-              {{ form.nickname }}<br>
+              {{ form.nickname(class="inputbox") }}<br>
               {% for error in form.nickname.errors %}
                   <span style="color:rgb(95, 24, 7);">{{ error }}</span>
               {% endfor %}
       {% else %}
-              {{ form.nickname }}
+              {{ form.nickname(class="inputbox") }}
       {% endif %}
       <br><br>
       {{ form.moment.label}}<br>
       {% if form.moment.errors %}
-              {{ form.moment }}<br>
+              {{ form.moment(class="inputbox") }}<br>
               {% for error in form.moment.errors %}
                   <span style="color:rgb(95, 24, 7);">{{ error }}</span>
               {% endfor %}
       {% else %}
-              {{ form.moment }}
+              {{ form.moment(class="inputbox") }}
       {% endif %}
-      <br><br><br>
-      {{ form.submit }}
-    </form>
-    <br>
-    <br>
-    </div>
+      <br>
+      {{ form.submit(class="sub-btn") }}
+    </form><br>
+    </div><br><br>
     {%else%}
     <p style="font-weight:bold;font-size:1.8rem">Your Comments about {{ name }}</p>
-    <div style="margin-left:40px;">
+    <div style="margin-left:5vw;width:50vw;word-wrap:break-word;">
         <p style="font-size:1.5rem;font-weight:bold;">Thoughts about your friendship...</p>
         <div>{{ t.about }}</div><br>
         <p style="font-size:1.5rem;font-weight:bold;">Nickname</p>
@@ -77,7 +77,7 @@
         <p style="font-size:1.5rem;font-weight:bold;">Best Moment</p>
         <div>{{ t.moment }}</div><br>
         </div><br>
-        <button style="background:red;margin-left:40px;font-weight:bold" onclick="window.location.href='{{ url_for('delete', rno=t.receiver_id) }}'">Delete</button><br><br>
+        <button style="background:red;margin-left:5vw;font-weight:bold" onclick="window.location.href='{{ url_for('delete', rno=t.receiver_id) }}'">Delete</button><br><br>
     {%endif%}
 </body>
 </html>

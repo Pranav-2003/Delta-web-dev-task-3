@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 </head>
-<body>
+<body class="bg">
     <h1 style="background-color:#EAE3D2;">DIGITAL SLAMBOOK</h1>
     <a href="{{ url_for('logout') }}" style="text-decoration:none;font-size:1.2rem;color:black;font-weight:bold;float:right;margin-top:-50px;margin-right:20px;">Logout</a>
     <a href="{{ url_for('account') }}" style="text-decoration:none;font-size:1.2rem;color:black;font-weight:bold;float:right;margin-top:-54px;margin-right:95px;"><img src="static/pfp.PNG" width="30" height="30"></a>
@@ -14,15 +14,17 @@
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     {% for message in messages %}
-       <div style="text-align:center;background-color:rgb(29, 170, 170);width:fit-content;margin-left:35vw;"> {{ message }} </div>
+       <div style="text-align:center;background-color:rgb(29, 170, 170);width:fit-content;margin-left:36vw;"> {{ message }} </div>
     {% endfor %}
     {% endif %}
     {% endwith %}<br>
     <h2>Look out for your friends and share your comments about them!</h2><br>
     <form method="POST" action="">
     {{ form.hidden_tag() }}
-    {{form.searched}}
-    {{form.submit}}
+    <div style="margin-left:10vw;">
+      {{form.searched}}
+      {{form.submit}}
+    </div>
     </form>
     <br><br>
     <hr><br>
