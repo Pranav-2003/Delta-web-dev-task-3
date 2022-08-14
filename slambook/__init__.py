@@ -9,7 +9,7 @@ app  = Flask(__name__)
 app.config['SECRET_KEY'] = 'f8e6c5b914302b637b9130dfa0498389'
  
  
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://tsdtsupldfsjnu:d34cbf1f65d43a61f8f866b147c76c79eedb452466c5bf801da07b4dbed14771@ec2-3-208-79-113.compute-1.amazonaws.com:5432/dahhrchllm58nl'
+app.config['SQLALCHEMY_DATABASE_URI'] = ' postgresql://nlndqtovnrgeke:763f97bafed23ff10e55c07a0b7bc549882fae6b473f776e9d0be1ce2985f52a@ec2-34-203-182-65.compute-1.amazonaws.com:5432/d9tp38roctgdpj'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
